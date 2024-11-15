@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market Rates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #0073e6;
+            color: #fff;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e0f3ff;
+        }
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Market Rates</h1>
+    <table>
+        <tr>
+            <th>Rate ID</th>
+            <th>Asset ID</th>
+            <th>Date</th>
+            <th>Rate Value</th>
+        </tr>
+        {% for rate in rates %}
+        <tr>
+            <td>{{ rate.rate_id }}</td>
+            <td>{{ rate.asset_id }}</td>
+            <td>{{ rate.date }}</td>
+            <td>{{ rate.rate_value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

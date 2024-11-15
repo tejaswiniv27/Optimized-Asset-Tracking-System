@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person and Asset Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #444;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #0073e6;
+            color: #fff;
+            font-weight: bold;
+        }
+        td {
+            color: #333;
+            background-color: #f5f8fc;
+        }
+        tr:nth-child(even) td {
+            background-color: #eaf2fb;
+        }
+        tr:hover td {
+            background-color: #d0e7ff;
+        }
+        table th, table td {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #0073e6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Person and Asset Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Person ID</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Asset Type</th>
+                <th>Current Value</th>
+                <th>Asset Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row['person_id'] }}</td>
+                <td>{{ row['person_name'] }}</td>
+                <td>{{ row['city'] }}</td>
+                <td>{{ row['state'] }}</td>
+                <td>{{ row['asset_type'] }}</td>
+                <td>{{ row['current_value'] }}</td>
+                <td>{{ row['asset_status'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Total Loan Amount per Person</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Person ID</th>
+                <th>Total Loan Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for loan in loan_totals %}
+            <tr>
+                <td>{{ loan['person_id'] }}</td>
+                <td>{{ loan['total_loan_amount'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Assets with Loans Above 5000</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Person ID</th>
+                <th>Asset Name</th>
+                <th>Current Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asset in high_loan_assets %}
+            <tr>
+                <td>{{ asset['asset_id'] }}</td>
+                <td>{{ asset['asset_name'] }}</td>
+                <td>{{ asset['current_value'] }}</td>
+                <td>{{ asset['person_id'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

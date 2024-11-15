@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Person</h2>
+<form action="/edit_person/{{ person['person_id'] }}" method="post">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ person['name'] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="employment_details">Employment Details:</label>
+        <textarea class="form-control" id="employment_details" name="employment_details">{{ person['employment_details'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ person['date_of_birth'] }}">
+    </div>
+    <div class="form-group">
+        <label for="street">Street:</label>
+        <input type="text" class="form-control" id="street" name="street" value="{{ person['street'] }}">
+    </div>
+    <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" id="city" name="city" value="{{ person['city'] }}">
+    </div>
+    <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" class="form-control" id="state" name="state" value="{{ person['state'] }}">
+    </div>
+    <div class="form-group">
+        <label for="photo_id">Pincode:</label>
+        <input type="number" class="form-control" id="photo_id" name="photo_id" value="{{ person['photo_id'] }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Person</button>
+</form>
+{% endblock %}
